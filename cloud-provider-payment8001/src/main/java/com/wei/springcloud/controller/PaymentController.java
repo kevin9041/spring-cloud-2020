@@ -11,6 +11,7 @@ import com.wei.springcloud.vo.CommonResult;
 
 import javax.annotation.Resource;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,8 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping({"/payment"})
+@Slf4j
 public class PaymentController {
-    private static final Logger log = LoggerFactory.getLogger(PaymentController.class);
     @Resource
     private PaymentService paymentService;
 
