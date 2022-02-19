@@ -5,12 +5,14 @@ package com.wei.springcloud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
  * @author weihuanbo
  * @version OrderMain80: OrderMain80.java, v0.1 2022/2/7 weihuanbo Exp $$
  */
 @SpringBootApplication
+@EnableEurekaClient
 public class OrderMain80 {
 
     public static void main(String[] args) {
