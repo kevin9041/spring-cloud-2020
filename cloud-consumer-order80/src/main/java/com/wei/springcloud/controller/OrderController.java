@@ -8,6 +8,7 @@ package com.wei.springcloud.controller;
 import com.wei.springcloud.entities.Payment;
 import com.wei.springcloud.vo.CommonResult;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,5 +39,15 @@ public class OrderController {
     @RequestMapping(value = "/payment/getPaymentById/{paymentId}", method = RequestMethod.GET)
     public CommonResult getPaymentById(@PathVariable("paymentId") Long paymentId) {
         return restTemplate.getForObject(PAYMENT_URL + "/payment/getPaymentById/" + paymentId, CommonResult.class);
+    }
+
+    @RequestMapping(value = "/payment/getPaymentById/getForEntity/{paymentId}", method = RequestMethod.GET)
+    public CommonResult getPaymentByIdGetForEntity(@PathVariable("paymentId") Long paymentId) {
+        ResponseEntity<CommonResult> entity = restTemplate.getForEntity(PAYMENT_URL + "/payment/getPaymentById/" + paymentId, CommonResult.class);
+        if (entity.getStatusCode().is2xxSuccessful()) {
+            return entity.getBody();
+        } else {
+            return new CommonResult(500, "执行异常");
+        }
     }
 }
