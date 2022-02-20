@@ -9,3 +9,8 @@ eureka:
     fetch-registry: false #false 表示不去注册中心获取其他服务的地址
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka/ #设置于eureka交互的地址
+  server:
+    #关闭自我保护机制，保证不可用服务被及时提除
+    enable-self-preservation: false
+    #修改循环剔除无效服务的时间间隔（默认90秒）为2秒
+    eviction-interval-timer-in-ms: 2000
