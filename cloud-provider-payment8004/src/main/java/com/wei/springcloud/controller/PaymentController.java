@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.UUID;
 
 @RestController
-@RequestMapping({"/payment"})
+@RequestMapping("/payment")
 @Slf4j
 public class PaymentController {
 

@@ -18,7 +18,7 @@ import org.springframework.web.client.RestTemplate;
 import javax.annotation.Resource;
 
 @RestController
-@RequestMapping({"/consumer"})
+@RequestMapping("/consumer")
 @Slf4j
 public class OrderController {
 
