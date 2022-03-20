@@ -64,4 +64,9 @@ public class PaymentController {
         }
         return discoveryClient;
     }
+
+    @RequestMapping(value = "/selfLoadBalance/showServerport", method = RequestMethod.GET)
+    public String showServerport() {
+        return serverPort;
+    }
 }

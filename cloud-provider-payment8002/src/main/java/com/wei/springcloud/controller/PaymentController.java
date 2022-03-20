@@ -42,4 +42,9 @@ public class PaymentController {
         Payment payment = this.paymentService.getPaymentById(paymentId);
         return payment != null ? new CommonResult(200, "查询成功", payment) : new CommonResult(404, "查询失败");
     }
+
+    @RequestMapping(value = "/selfLoadBalance/showServerport", method = RequestMethod.GET)
+    public String showServerport() {
+        return serverPort;
+    }
 }
