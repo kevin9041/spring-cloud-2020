@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @Slf4j
 @RequestMapping(value = "/consumer")
+@DefaultProperties(defaultFallback = "defaultGlobalFallBack")
 public class OrderFeignHystrixController {
     @Autowired
     private PaymentFeignHystrixService paymentFeignHystrixService;
@@ -32,9 +33,10 @@ public class OrderFeignHystrixController {
     }
 
     //指定服务降级的方法和触发的条件（此处是响应时间超过1.5秒）
-    @HystrixCommand(fallbackMethod = "paymentInfoHandler", commandProperties = {
-            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1500")
-    })
+    @HystrixCommand
+    //@HystrixCommand(fallbackMethod = "paymentInfoHandler", commandProperties = {
+    //        @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1500")
+    //})
     @RequestMapping(value = "/feign/hystrix/timeout/{paymentId}", method = RequestMethod.GET)
     public String feignHystrixTimeout(@PathVariable("paymentId") Long paymentId) {
         String result = paymentFeignHystrixService.feignHystrixTimeout(paymentId);
@@ -45,4 +47,7 @@ public class OrderFeignHystrixController {
         return Thread.currentThread().getName() + "========客户端服务降级:paymentInfoHandler==========";
     }
 
+    String defaultGlobalFallBack() {
+        return Thread.currentThread().getName() + "========全局默认的客户端服务降级==========";
+    }
 }
