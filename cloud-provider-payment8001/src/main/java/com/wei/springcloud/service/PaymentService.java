@@ -6,10 +6,9 @@
 package com.wei.springcloud.service;
 
 import com.wei.springcloud.entities.Payment;
-import org.apache.ibatis.annotations.Param;
 
 public interface PaymentService {
-    int create(Payment var1);
+    int create(Payment payment);
 
-    Payment getPaymentById(@Param("paymentId") Long var1);
+    Payment getPaymentById(Long paymentId);
 }

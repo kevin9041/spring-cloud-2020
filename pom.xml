@@ -20,6 +20,7 @@
         <module>cloud-api-commons</module>
         <module>cloud-eureka-server7001</module>
         <module>cloud-eureka-server7002</module>
+        <module>cloud-feign-consumer-order80</module>
     </modules>
 
     <!-- 统计管理jar包版本 -->
