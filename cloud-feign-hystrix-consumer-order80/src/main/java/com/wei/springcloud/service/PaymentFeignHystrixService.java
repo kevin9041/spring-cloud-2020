@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @version PaymentFeignHystrixService: PaymentFeignHystrixService.java, v0.1 2022/4/4 weihuanbo Exp $$
  */
 @Component
-@FeignClient(value = "CLOUD-PAYMENT-FEIGN-HYSTRIX-SERVICE")
+@FeignClient(value = "CLOUD-PAYMENT-FEIGN-HYSTRIX-SERVICE",fallback = FeignHystrixFallbackService.class)
 public interface PaymentFeignHystrixService {
 
     @RequestMapping(value = "/payment/ok/{paymentId}", method = RequestMethod.GET)
