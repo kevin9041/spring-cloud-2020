@@ -7,16 +7,10 @@ package com.wei.springcloud.service;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
-import com.wei.springcloud.dao.PaymentDao;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 
 @Service
 public class PaymentServiceImpl implements PaymentService {
-    @Resource
-    private PaymentDao paymentDao;
-
     public PaymentServiceImpl() {
     }
 
