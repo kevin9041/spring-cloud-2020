@@ -39,4 +39,12 @@ public class PaymentController {
         return result;
     }
 
+    //===================服务熔断
+    @RequestMapping(value = "/circuit/{id}", method = RequestMethod.GET)
+    public String hystrixTimeout(@PathVariable("id") Integer id) {
+        String result = paymentService.paymentCircuitBreaker(id);
+        log.info("==============result:" + result);
+        return result;
+    }
+
 }
