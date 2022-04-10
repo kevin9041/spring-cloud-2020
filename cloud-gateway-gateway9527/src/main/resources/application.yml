@@ -26,7 +26,10 @@ spring:
             - Method=GET,POST
             - Query=green
             - RemoteAddr=192.168.1.1/24
-            # 官网地址：https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#gateway-request-predicates-factories
+            # 断言官网地址：https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#gateway-request-predicates-factories
+          filters:
+            - AddRequestHeader=X-Request-red, blue
+              #过滤器官网地址：https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#gatewayfilter-factories
 
         - id: payment_routh #路由的id，没有固定的规则要求但是要求唯一，建议配合服务名设置
           uri: http://localhost:8001  #路由匹配后进行服务的地址
