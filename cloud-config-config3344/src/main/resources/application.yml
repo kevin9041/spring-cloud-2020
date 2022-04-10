@@ -1,0 +1,32 @@
+server:
+  port: 3344
+
+spring:
+  application:
+    name: cloud-config-service
+  cloud:
+    config:
+      server:
+        git:
+          # 这两个地址形式都可以
+          uri: https://github.com/kevin9041/service-config.git
+#          uri: git@github.com:kevin9041/service-config.git
+          search-paths:
+            # 配置文件所在的目录地址
+            - service-config
+      label: master
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+#      defaultZone: http://localhost:7001/eureka #单机版
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka #高可用版
+  instance:
+    instance-id: config3344
+    prefer-ip-address: true
+    #修改客户端向服务端发送心跳的周期时间（默认30秒）为1秒
+    lease-renewal-interval-in-seconds: 1
+    #Eureka服务端收到最后一次心跳后等待时间上限（默认90秒），超时将剔除服务
+    lease-expiration-duration-in-seconds: 2
