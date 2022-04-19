@@ -26,3 +26,10 @@ eureka:
     lease-renewal-interval-in-seconds: 1
     #Eureka服务端收到最后一次心跳后等待时间上限（默认90秒），超时将剔除服务
     lease-expiration-duration-in-seconds: 2
+
+#暴露项目可被监控的断点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
