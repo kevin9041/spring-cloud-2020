@@ -27,6 +27,7 @@
         <module>cloud-gateway-gateway9527</module>
         <module>cloud-config-config3344</module>
         <module>cloud-config-config3355</module>
+        <module>cloud-config-config3366</module>
     </modules>
 
     <!-- 统计管理jar包版本 -->

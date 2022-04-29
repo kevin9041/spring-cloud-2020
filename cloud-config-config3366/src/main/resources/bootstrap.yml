@@ -1,0 +1,35 @@
+server:
+  port: 3366
+
+spring:
+  application:
+    name: service-config-client
+  cloud:
+    config:
+      uri: http://localhost:3344 # 客户端从config的服务端拉取配置
+      label: master #读取分支的名称
+      name: config #配置文件的名称
+      profile: test #读取后缀的名称
+      # 以上配置相当于请求：http://localhost:3344/master/config-test.yml
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+#      defaultZone: http://localhost:7001/eureka #单机版
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka #高可用版
+  instance:
+    instance-id: config3366
+    prefer-ip-address: true
+    #修改客户端向服务端发送心跳的周期时间（默认30秒）为1秒
+    lease-renewal-interval-in-seconds: 1
+    #Eureka服务端收到最后一次心跳后等待时间上限（默认90秒），超时将剔除服务
+    lease-expiration-duration-in-seconds: 2
+
+#暴露项目可被监控的断点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
