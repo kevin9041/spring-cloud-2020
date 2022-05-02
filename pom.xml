@@ -31,6 +31,9 @@
         <module>cloud-stream-rabbitmq-provider8801</module>
         <module>cloud-stream-rabbitmq-consumer8802</module>
         <module>cloud-stream-rabbitmq-consumer8803</module>
+        <module>cloud-nacos-provider-payment9005</module>
+        <module>cloud-nacos-provider-payment9006</module>
+        <module>cloud-nacos-consumer-order90</module>
     </modules>
 
     <!-- 统计管理jar包版本 -->
