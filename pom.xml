@@ -34,6 +34,7 @@
         <module>cloud-nacos-provider-payment9005</module>
         <module>cloud-nacos-provider-payment9006</module>
         <module>cloud-nacos-consumer-order90</module>
+        <module>cloud-nacos-config-config3377</module>
     </modules>
 
     <!-- 统计管理jar包版本 -->
