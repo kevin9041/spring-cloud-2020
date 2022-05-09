@@ -7,10 +7,5 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8848 #nacos的服务地址
-      config:
-        server-addr: localhost:8848 #nacos的服务地址
-        file-extension: yaml
-        group: group1
-#        group: group2 #nacos配置的组名
-        namespace: 187a5779-bcde-4098-ab7e-97aaa9dab7b3 #nacos配置的命名空间的id
+        server-addr: 192.168.31.96:8888  #基于nginx负载的nacos的集群服务地址
+#        server-addr: localhost:8848 #nacos的服务地址
