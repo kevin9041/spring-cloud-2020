@@ -37,6 +37,7 @@
         <module>cloud-nacos-config-config3377</module>
         <module>cloud-nacos-config-config3388</module>
         <module>cloud-sentinel-service8401</module>
+        <module>cloud-snowflake-service7777</module>
     </modules>
 
     <!-- 统计管理jar包版本 -->
