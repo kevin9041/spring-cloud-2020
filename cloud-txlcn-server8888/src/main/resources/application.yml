@@ -1,0 +1,43 @@
+server:
+  port: 8888
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: cloud-txlcn-server
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: ze1bw0,7E[9V
+    url: jdbc:mysql://172.16.0.185:3306/tx-manager?useUnicode=true&characterEncoding=utf-8&useSSL=false
+  redis:
+    host: 172.16.0.185
+    port: 6379
+    password: Idss[2048]
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    use-generated-keys: true
+
+tx-lcn:
+  manager:
+    # TxManager Host Ip
+    host: 127.0.0.1
+    # TxClient连接请求端口
+    port: 8070
+    # 心跳检测时间(ms)
+    heart-time: 15000
+    # 分布式事务超时时间
+    dtx-time: 30000
+    #事务处理并发级别
+    concurrent-level: 128
+  message:
+    netty:
+      #参数延迟删除时间,单位ms
+      attr-delay-time: 10000
+  logger:
+    # 开启日志
+    enabled: true

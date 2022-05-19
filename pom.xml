@@ -38,6 +38,9 @@
         <module>cloud-nacos-config-config3388</module>
         <module>cloud-sentinel-service8401</module>
         <module>cloud-snowflake-service7777</module>
+        <module>cloud-txlcn-server8888</module>
+        <module>cloud-txlcn-client5555</module>
+        <module>cloud-txlcn-client6666</module>
     </modules>
 
     <!-- 统计管理jar包版本 -->
