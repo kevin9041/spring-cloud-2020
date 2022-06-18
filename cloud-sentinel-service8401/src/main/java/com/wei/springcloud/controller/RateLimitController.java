@@ -43,12 +43,15 @@ public class RateLimitController {
     }
 
     @GetMapping(value = "/fallback/{id}")
-    @SentinelResource(value = "fallback", fallback = "handleFallback")
+    @SentinelResource(value = "fallback"
+            , fallback = "handleFallback"
+            , blockHandler = "handleException"
+            , exceptionsToIgnore = {RuntimeException.class})
     public CommonResult fallback(@PathVariable Long id) {
         if (id > 0) {
             return new CommonResult(200, "服务降级测试OK", new Payment(2022L, "fallback"));
         } else {
-            throw new RuntimeException("id 不能小于0");
+            throw new RuntimeException();
         }
     }
 
