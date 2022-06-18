@@ -15,6 +15,15 @@ spring:
         dashboard: localhost:8080
         #默认8719 假如被占用会自动从8719开始依次+1扫描，直到找到未占用的端口
         port: 8719
+        #sentinel持久化配置
+      datasource:
+        ds1:
+          nacos:
+            server-addr: localhost:8848
+            dataId: ${spring.application.name}
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow
 
 management:
   endpoints:
