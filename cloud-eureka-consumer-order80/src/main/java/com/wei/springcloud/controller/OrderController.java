@@ -11,7 +11,6 @@ import com.wei.springcloud.vo.CommonResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
-import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -68,5 +66,20 @@ public class OrderController {
         List<ServiceInstance> services = discoveryClient.getInstances("cloud-payment-service");
         ServiceInstance nextInstance = loadBalance.getNextInstance(services);
         return restTemplate.getForObject(nextInstance.getUri() + "/payment/selfLoadBalance/showServerport", String.class);
+    }
+
+    @RequestMapping(value = "/testEnableDiscoveryClient", method = RequestMethod.GET)
+    public DiscoveryClient testEnableDiscoveryClient() {
+        List<String> services = discoveryClient.getServices();
+        for (int i = 0; i < services.size(); i++) {
+            log.info("****service:" + services.get(i));
+        }
+
+        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
+        for (int i = 0; i < instances.size(); i++) {
+            ServiceInstance serviceInstance = instances.get(i);
+            log.info("***instance info:" + serviceInstance.getServiceId() + "," + serviceInstance.getInstanceId() + "," + serviceInstance.getHost() + "," + serviceInstance.getPort() + "," + serviceInstance.getUri() + "," + serviceInstance.getScheme());
+        }
+        return discoveryClient;
     }
 }
